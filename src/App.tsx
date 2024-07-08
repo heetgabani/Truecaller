@@ -23,7 +23,7 @@ function App() {
     return () => clearTimeout(timer);
   }, []);
 
-  return <div className="App"></div>;
+  return <div className="App">Truecaller Demo</div>;
 }
 
 export default App;
