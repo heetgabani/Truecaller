@@ -1,7 +1,9 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./App.css";
 
 function App() {
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     const OTPless = Reflect.get(window, "OTPless");
 
@@ -18,13 +20,19 @@ function App() {
 
     const timer = setTimeout(() => {
       handleTrueCaller();
-    }, 5000); // 10 seconds
+      setLoading(false);
+    }, 5000);
 
     return () => clearTimeout(timer);
   }, []);
+
   return (
     <div className="App">
-      <h1>OTPless TrueCaller Demo</h1>
+      {loading ? (
+        <div className="loader">Loading...</div>
+      ) : (
+        <h1>OTPless TrueCaller Demo</h1>
+      )}
     </div>
   );
 }
