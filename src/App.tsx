@@ -1,26 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	const OTPless = Reflect.get(window, "OTPless");
+
+	const callback = console.log;
+
+	const OTPlessSignin = new OTPless(callback);
+
+	const handleTrueCaller = async () => {
+		OTPlessSignin.initiate({
+			channel: "OAUTH",
+			channelType: "TRUE_CALLER",
+		}).then(console.log);
+	};
+
+	return (
+		<div className="App">
+			<button onClick={handleTrueCaller}>Login with Truecaller</button>
+		</div>
+	);
 }
 
 export default App;
