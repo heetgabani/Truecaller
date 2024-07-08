@@ -18,7 +18,7 @@ function App() {
 
     const timer = setTimeout(() => {
       handleTrueCaller();
-    }, 5000);
+    }, 1000);
 
     return () => clearTimeout(timer);
   }, []);
